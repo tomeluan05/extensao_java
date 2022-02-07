@@ -1,6 +1,6 @@
 
 public class ContaEspecial extends Conta{
-	public final String ATENDIMENTO = "Prioritário";
+	public final String ATENDIMENTO = "PrioritÃ¡rio";
 	public double chequeEspecial;
 	
 	public ContaEspecial(String nomeUsuario, int numeroConta, double saldoConta, double chequeEspecial) {
@@ -20,24 +20,24 @@ public class ContaEspecial extends Conta{
 	public void sacar(double valorSacado) {
 		if(valorSacado <= this.saldoConta) {
 			this.saldoConta -= valorSacado;
-			System.out.printf("Saque realizado com sucesso, seu novo saldo é de: R$ %.2f %n", this.saldoConta);
+			System.out.printf("Saque realizado com sucesso, seu novo saldo Ã© de: R$ %.2f %n", this.saldoConta);
 		}else if(valorSacado > this.saldoConta + this.getChequeEspecial()) {
 			System.out.println("Esse valor excede seu saldo mais o seu saldo no limite do cheque especial. Insira outro valor:");
 		} else if(valorSacado > this.saldoConta) {
 			this.saldoConta -= valorSacado;
 			this.chequeEspecial += this.saldoConta;
-			System.out.println("Você não tem saldo suficiente para essa operação, você vai usar seu cheque especial.");
-			System.out.printf("Seu limite especial agora é R$ %.2f %n", this.getChequeEspecial());
+			System.out.println("VocÃª nÃ£o tem saldo suficiente para essa operaÃ§Ã£o, vocÃª vai usar seu cheque especial.");
+			System.out.printf("Seu limite especial agora Ã© R$ %.2f %n", this.getChequeEspecial());
 		}
 	}
 	
 	public void depositar(double valorDeposito) {
 		if(valorDeposito <= 0) {
-			System.out.printf("Deposite algum valor válido.%n");
-		}else if(valorDeposito >= 0) {
+			System.out.printf("Deposite algum valor vÃ¡lido.%n");
+		}else if(this.saldoConta >= 0) {
 			this.saldoConta += valorDeposito;
-			System.out.printf("Depósito realizado com sucesso!%n");
-			System.out.printf("Seu novo saldo é de: R$ %.2f %n", this.saldoConta);
+			System.out.printf("DepÃ³sito realizado com sucesso!%n");
+			System.out.printf("Seu novo saldo Ã© de: R$ %.2f %n", this.saldoConta);
 		}else if(valorDeposito < Math.abs(this.saldoConta)){
 			this.chequeEspecial += valorDeposito;
 			this.saldoConta += valorDeposito;
